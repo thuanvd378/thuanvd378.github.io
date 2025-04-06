@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIoT Blog Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--primary:#0f62fe;--dark:#0b0c10;--light:#fff;--gray:#f3f4f6}
+    *{box-sizing:border-box;font-family:Poppins, sans-serif;margin:0;padding:0}
+    body{background:var(--gray);color:var(--dark);padding:2rem;line-height:1.5}
+    h1{margin-bottom:1rem;text-align:center}
+    label{display:block;font-weight:600;margin-top:1rem}
+    input[type="text"],textarea,select{width:100%;padding:.5rem .75rem;border:1px solid #ccc;border-radius:.4rem;margin-top:.3rem}
+    textarea{min-height:80px}
+    .heading-list{display:flex;flex-wrap:wrap;gap:1rem;margin-top:.5rem}
+    .heading-list label{display:flex;align-items:center;gap:.4rem;font-weight:500}
+    .section-card{background:var(--light);border-radius:.6rem;padding:1rem;margin-top:1.5rem;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+    .section-card h3{margin-bottom:.5rem;color:var(--primary)}
+    .content-block{border:1px dashed #bbb;border-radius:.5rem;padding:.75rem;margin-top:.75rem;position:relative}
+    .content-block textarea{min-height:60px}
+    .remove-btn{position:absolute;top:.4rem;right:.4rem;background:#e74c3c;color:#fff;border:none;border-radius:50%;width:22px;height:22px;cursor:pointer;font-size:.8rem;line-height:22px;text-align:center}
+    .add-btn{margin-top:.75rem;padding:.4rem .8rem;background:var(--primary);color:#fff;border:none;border-radius:.4rem;cursor:pointer}
+    #generate{margin-top:2rem;padding:.6rem 1.2rem;font-size:1rem;background:var(--primary);color:#fff;border:none;border-radius:.5rem;cursor:pointer}
+    #output{margin-top:2rem;background:#1e1e1e;color:#dcdcdc;padding:1rem;border-radius:.5rem;white-space:pre;overflow:auto}
+    button#preview-btn,
+button#copy-btn,
+button#download-btn {
+  padding: 0.5rem 1rem;
+  background: #444;
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s;
+}
+button#preview-btn:hover,
+button#copy-btn:hover,
+button#download-btn:hover {
+  background: #222;
+}
+  </style>
+</head>
+<body>
+  <h1>AIoT Blog Generator</h1>
+
+  <label>Project Title
+    <input type="text" id="proj-title" placeholder="e.g. ABC IoT" />
+  </label>
+
+  <label>Hero Background Image URL
+    <input type="text" id="bg-url" placeholder="e.g. https://.../image.jpg" />
+  </label>
+
+  <label>Select Headings to include</label>
+  <div class="heading-list" id="heading-options"></div>
+
+  <div id="sections-container"></div>
+
+  <button id="generate">Generate HTML</button>
+  <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+  <button id="preview-btn">Preview</button>
+  <button id="copy-btn">Copy Code</button>
+  <button id="download-btn">Download HTML</button>
+  </div>
+  <pre id="output"></pre>
+
+
+<script>
+const HEADINGS=[
+  {id:'intro',text:'Introduction and Purpose'},
+  {id:'scope',text:'Scope'},
+  {id:'mechanism',text:'Operating Mechanism'},
+  {id:'hardware',text:'Hardware Design'},
+  {id:'software',text:'Software Design'},
+  {id:'testing',text:'Testing and Evaluation'},
+  {id:'conclusion',text:'Conclusion and Future Work'},
+  {id:'source',text:'Source Code'},
+  {id:'references',text:'References'}
+];
+const headingOpts=document.getElementById('heading-options');
+const sectionsContainer=document.getElementById('sections-container');
+
+HEADINGS.forEach(h=>{
+  const lbl=document.createElement('label');
+  lbl.innerHTML=`<input type="checkbox" value="${h.id}"> ${h.text}`;
+  headingOpts.appendChild(lbl);
+});
+
+headingOpts.addEventListener('change',e=>{
+  if(e.target.tagName!=='INPUT')return;
+  const id=e.target.value;
+  const existing=document.getElementById(`sec-${id}`);
+  if(e.target.checked){
+    if(!existing) createSection(id);
+  }else{
+    existing?.remove();
+  }
+});
+
+function createSection(id){
+  const h=HEADINGS.find(x=>x.id===id);
+  const card=document.createElement('div');
+  card.className='section-card';
+  card.id=`sec-${id}`;
+  card.innerHTML=`<h3>${h.text}</h3><div class="blocks"></div>`;
+  const addBtn=document.createElement('button');
+  addBtn.textContent='+ Add';
+  addBtn.className='add-btn';
+  addBtn.addEventListener('click',()=>addBlock(card.querySelector('.blocks')));
+  card.appendChild(addBtn);
+  sectionsContainer.appendChild(card);
+}
+
+function addBlock(container){
+  const type=prompt('Enter "text" to add content or "image" to add image block:');
+  if(!type) return;
+  const block=document.createElement('div');
+  block.className='content-block';
+  const remove=document.createElement('button');
+  remove.textContent='×';
+  remove.className='remove-btn';
+  remove.onclick=()=>block.remove();
+  block.appendChild(remove);
+  if(type.toLowerCase()==='text'){
+    block.innerHTML+=`<label>Text Content<textarea placeholder="Enter text"></textarea></label>`;
+  }else if(type.toLowerCase()==='image'){
+    block.innerHTML+=`<label>Image URL<input type="text" placeholder="https://..." class="img-url"/></label><label>Caption<input type="text" placeholder="caption" class="img-cap"/></label>`;
+  }else{
+    alert('Invalid type');return;
+  }
+  container.appendChild(block);
+}
+
+function roman(num){const romans=['','I','II','III','IV','V','VI','VII','VIII','IX'];return romans[num]||num;}
+
+function generateHTML(){
+  const title=document.getElementById('proj-title').value.trim()||'Project';
+  const bg=document.getElementById('bg-url').value.trim()||'https://via.placeholder.com/1600x400';
+  const chosen=[...document.querySelectorAll('.heading-list input:checked')].map(i=>i.value);
+  let tocLinks='';
+  let sections='';
+  chosen.forEach((id,idx)=>{
+    const heading=HEADINGS.find(h=>h.id===id);
+    tocLinks+=`          <li><a href="#${id}">${heading.text}</a></li>\n`;
+    let sec=`    <section id="${id}" class="article-section">\n      <h2>${roman(idx+1)}. ${heading.text}</h2>\n`;
+    const blocks=document.querySelectorAll(`#sec-${id} .content-block`);
+    blocks.forEach(b=>{
+      if(b.querySelector('textarea')){
+        const text=b.querySelector('textarea').value.replace(/</g,'&lt;');
+        if(text) sec+=`      <p>${text}</p>\n`;
+      }else if(b.querySelector('.img-url')){
+        const url=b.querySelector('.img-url').value;
+        const cap=b.querySelector('.img-cap').value;
+        if(url) sec+=`      <figure><img src="${url}" alt="${heading.text}"><figcaption>${cap}</figcaption></figure>\n`;
+      }
+    });
+    sec+='    </section>\n\n';
+    sections+=sec;
+  });
+
+  const html=`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>${title}</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+ <style>
+    :root { --primary:#0f62fe; --primary-dark:#0c4fd1; --dark:#0b0c10; --light:#fff; --gray:#f3f4f6; }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:"Poppins",sans-serif}
+    html{scroll-behavior:smooth}
+    body{background:var(--light);color:var(--dark);line-height:1.6;opacity:0;transition:opacity .4s ease}
+    body.loaded{opacity:1}
+    header{position:sticky;top:0;background:var(--light);box-shadow:0 2px 8px rgba(0,0,0,.05);z-index:100}
+    nav{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem}
+    .logo{font-weight:700;font-size:1.4rem;color:var(--primary)}
+    .nav-links{list-style:none;display:flex;gap:2rem}
+    .nav-links a{text-decoration:none;color:var(--dark);font-weight:500;transition:color .3s}
+    .nav-links a:hover{color:var(--primary)}
+    .hero{height:35vh;background:url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80") center/cover no-repeat;display:flex;justify-content:center;align-items:center;position:relative}
+    .hero::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.45)}
+    .hero h1{position:relative;color:var(--light);font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:1px;z-index:1}
+    main{max-width:900px;margin:3rem auto;padding:0 1.5rem}
+    .back-btn{display:inline-block;color:var(--primary);text-decoration:none;font-weight:600;font-size:1.05rem;margin:0 0 .75rem -0.75rem;transition:color .3s}
+    .back-btn:hover{color:var(--primary-dark)}
+    .project-title{text-align:center;font-size:2rem;font-weight:700;color:var(--dark);margin-bottom:1.2rem}
+    .post-date{color:#666;margin-bottom:1.5rem;font-size:.9rem}
+    .toc{border-left:4px solid var(--primary);padding:1rem 1.5rem;margin-bottom:2.5rem}
+    .toc h2{font-size:1.2rem;margin-bottom:.75rem;color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+    .toc ul{list-style:none;padding-left:0}
+    .toc li+li{margin-top:.55rem}
+    .toc a{position:relative;display:inline-block;padding-left:1.25rem;text-decoration:none;color:var(--dark);font-weight:500;transition:color .3s}
+    .toc a::before{content:"\\f0da";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;left:0;top:0;color:var(--primary)}
+    .toc a:hover{color:var(--primary)}
+    section.article-section{margin-bottom:3rem}
+    section.article-section h2{font-size:1.75rem;color:var(--primary);margin-bottom:1rem}
+    section.article-section p{text-align:justify;margin-bottom:1rem}
+    figure{margin:0 0 1.5rem 0;text-align:center}
+    figure img{width:100%;max-height:350px;object-fit:cover;border-radius:.75rem;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+    figure figcaption{font-size:.9rem;color:#555;margin-top:.5rem}
+    .github-btn{display:inline-flex;align-items:center;gap:.5rem;background:#000;color:#fff;padding:.75rem 1.25rem;border-radius:.5rem;text-decoration:none;font-weight:600;transition:background .3s,transform .3s}
+    .github-btn:hover{background:#333;transform:translateY(-3px)}
+    footer{margin-top:4rem;background:var(--dark);color:var(--light);text-align:center;padding:2rem 1rem}
+    .social-icons a{color:var(--light);margin:0 .75rem;font-size:1.8rem;transition:color .3s,transform .3s}
+    .social-icons a:hover{color:var(--primary);transform:translateY(-3px)}
+    @media(max-width:600px){nav{flex-direction:column;gap:1rem}}
+    .fade-out{animation:fadeOut .4s ease forwards}
+    @keyframes fadeOut{to{opacity:0;transform:translateY(10px)}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">AIoT World Lab</div>
+      <ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Our Products</a></li></ul>
+    </nav>
+  </header>
+  <section class="hero"><h1>${title}</h1></section>
+  <main>
+    <a href="products.html" class="back-btn">&lt; Back</a>
+    <h1 class="project-title">${title}</h1>
+    <p class="post-date">${new Date().toLocaleDateString('en-GB')}</p>
+    <nav class="toc" aria-label="Table of contents"><h2>Contents</h2><ul>
+${tocLinks}    </ul></nav>
+
+${sections}  </main>
+  <footer>
+    <div class="social-icons"><a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div>
+    <p>© 2025 AIoT World Lab. All rights reserved.</p><p>Design by DucThuanVu</p>
+  </footer>
+  <script>
+    window.addEventListener('DOMContentLoaded',()=>document.body.classList.add('loaded'));
+    function attachPageTransition(sel,dur=400){document.querySelectorAll(sel).forEach(l=>{l.addEventListener('click',function(e){if(e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey)return;const href=this.getAttribute('href');if(!href.endsWith('.html'))return;e.preventDefault();document.body.classList.add('fade-out');setTimeout(()=>{window.location.href=href},dur);});});}
+    attachPageTransition("a[href$='.html']");
+  <\/script>
+</body>
+</html>`;
+  document.getElementById('output').textContent=html;
+}
+// Xem trước trong tab mới
+document.getElementById("preview-btn").onclick = () => {
+  const html = document.getElementById("output").textContent;
+  const blob = new Blob([html], {type: "text/html"});
+  const url = URL.createObjectURL(blob);
+  window.open(url, "_blank");
+};
+
+// Sao chép HTML vào clipboard
+document.getElementById("copy-btn").onclick = () => {
+  const html = document.getElementById("output").textContent;
+  navigator.clipboard.writeText(html).then(() => {
+    alert("Copied to clipboard!");
+  });
+};
+
+// Tải file HTML
+document.getElementById("download-btn").onclick = () => {
+  const fileName = prompt("Enter file name:", "blog1.html");
+  if (!fileName) return;
+  const html = document.getElementById("output").textContent;
+  const blob = new Blob([html], {type: "text/html"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = fileName.endsWith(".html") ? fileName : fileName + ".html";
+  a.click();
+};
+document.getElementById('generate').addEventListener('click',generateHTML);
+</script>
+</body>
+</html>
