@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIoT World Lab – Our Products</title>
+<link rel="icon" href="favicon.png" type="image/png">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary: #0f62fe;
+      --dark: #0b0c10;
+      --light: #ffffff;
+      --gray: #f3f4f6;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body { background: var(--light); color: var(--dark); line-height: 1.6; }
+
+    /* NAVBAR */
+    header {
+      position: sticky; top: 0; background: var(--light);
+      box-shadow: 0 2px 8px rgba(0,0,0,.05); z-index: 100;
+    }
+    nav {
+      max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;
+    }
+    .logo { font-weight: 700; font-size: 1.4rem; color: var(--primary); }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; transition: color .3s; }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* HERO */
+    .hero {
+      height: 40vh; background: url('https://images.unsplash.com/photo-1518779578993-ec3579fee39f?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      display: flex; justify-content: center; align-items: center; position: relative;
+    }
+    .hero::after { content:""; position: absolute; inset:0; background: rgba(0,0,0,.45); }
+    .hero h1 { position: relative; color: var(--light); font-size: clamp(2rem,5vw,3rem); font-weight:700; letter-spacing:1px; z-index:1; }
+
+    /* PRODUCTS GRID */
+    main { max-width: 1200px; margin: 3rem auto; padding: 0 1.5rem; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(250px,1fr)); gap: 2rem; }
+
+    .product-card {
+      background: var(--gray); border-radius: 1rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,.08); transition: transform .3s;
+    }
+    .product-card:hover { transform: translateY(-6px); }
+    .product-thumb { width:100%; height:180px; object-fit:cover; }
+    .product-name { padding: 1rem; font-size: 1.1rem; font-weight:600; text-align:center; }
+
+    /* FOOTER */
+    footer { margin-top:4rem; background: var(--dark); color: var(--light); text-align:center; padding:2rem 1rem; }
+    .social-icons a { color: var(--light); margin:0 .75rem; font-size:1.8rem; transition: color .3s, transform .3s; }
+    .social-icons a:hover { color: var(--primary); transform: translateY(-3px); }
+
+    @media(max-width:600px){ nav{flex-direction:column; gap:1rem;} }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header>
+    <nav>
+      <div class="logo">AIoT World Lab</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="products.html">Our Products</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Our Products</h1>
+  </section>
+
+  <main>
+    <!-- PRODUCTS GRID -->
+    <div class="products-grid" id="products-list">
+      <!-- Placeholder products (will be auto‑generated via CMS later) -->
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 1" class="product-thumb">
+        <div class="product-name">Smart Home Hub</div>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 2" class="product-thumb">
+        <div class="product-name">AI‑Powered Drone</div>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 3" class="product-thumb">
+        <div class="product-name">Environmental Sensor Node</div>
+      </div>
+      <div class="product-card">
+        <img src="https://via.placeholder.com/400x300" alt="Product 4" class="product-thumb">
+        <div class="product-name">Industrial IoT Gateway</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="social-icons">
+      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://youtube.com" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>© 2025 AIoT World Lab. All rights reserved.</p>
+    <p>Design by DucThuanVu</p>
+  </footer>
+
+  <!-- SCRIPT: placeholder for future CMS injection -->
+  <!--
+    Later we will replace the static HTML inside #products-list with
+    JavaScript that reads product data (JSON/Markdown) committed via the admin panel.
+  -->
+</body>
+</html>
