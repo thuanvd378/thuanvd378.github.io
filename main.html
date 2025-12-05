@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 20th Birthday, Thuy Duong</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-very-light: #e8f2ff;
+      --blue-soft: #c6ddff;
+      --blue-soft-alt: #c4d9ff;
+      --blue-medium: #8fb7ff;
+      --blue-deep: #3a6fd6;
+      --purple-soft: #d9c7ff;
+      --bubble-bg: rgba(255, 255, 255, 0.9);
+      --bubble-border: rgba(143, 183, 255, 0.6);
+      --note-bg: rgba(232, 242, 255, 0.95);
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.18);
+      --radius-lg: 24px;
+      --radius-xl: 28px;
+      --transition-fast: 0.32s ease;
+      --transition-med: 0.4s ease;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: "DM Sans", "Nunito", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-main);
+      background:
+        radial-gradient(circle at top left, rgba(217, 199, 255, 0.8) 0, rgba(217, 199, 255, 0) 55%),
+        radial-gradient(circle at bottom right, rgba(143, 183, 255, 0.8) 0, rgba(143, 183, 255, 0) 55%),
+        linear-gradient(145deg, #b7d6ff 0%, #e8f2ff 45%, #f2f3ff 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.35) 0, transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(255, 255, 255, 0.28) 0, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(180, 220, 255, 0.32) 0, transparent 60%);
+      pointer-events: none;
+      opacity: 0.65;
+      z-index: -2;
+    }
+
+    #app {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px 32px;
+      overflow: hidden;
+    }
+
+    .content-shell {
+      position: relative;
+      width: 100%;
+      max-width: 760px;
+      padding: 24px 20px 32px;
+      border-radius: 28px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.9) 0, rgba(232, 242, 255, 0.92) 55%, rgba(200, 218, 255, 0.9) 100%);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(14px);
+    }
+
+    @media (min-width: 768px) {
+      .content-shell {
+        padding: 32px 40px 40px;
+        border-radius: 32px;
+      }
+    }
+
+    .top-header {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .top-tagline {
+      margin: 0;
+      padding: 6px 16px 7px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(232, 242, 255, 0.96);
+      box-shadow: 0 10px 24px rgba(148, 163, 184, 0.35);
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity var(--transition-med), transform var(--transition-med);
+    }
+
+    .top-tagline.header-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stage-wrapper {
+      position: relative;
+      width: 100%;
+      min-height: 240px;
+      margin-top: 36px;
+    }
+
+    @media (min-width: 768px) {
+      .stage-wrapper {
+        min-height: 280px;
+        margin-top: 40px;
+      }
+    }
+
+    .stage {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity var(--transition-fast), transform var(--transition-fast);
+      pointer-events: none;
+    }
+
+    .stage.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .stage.is-fading-out {
+      opacity: 0;
+      transform: translateY(-12px);
+      pointer-events: none;
+    }
+
+    .message-bubble {
+      max-width: 580px;
+      padding: 20px 20px;
+      border-radius: var(--radius-xl);
+      background: var(--bubble-bg);
+      border: 1px solid var(--bubble-border);
+      box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .message-bubble {
+        padding: 24px 26px;
+      }
+    }
+
+    .message-bubble::after {
+      content: "";
+      position: absolute;
+      left: 20%;
+      bottom: -16px;
+      width: 26px;
+      height: 26px;
+      border-radius: 20px;
+      background: var(--bubble-bg);
+      border: 1px solid var(--bubble-border);
+      border-top-color: transparent;
+      border-right-color: transparent;
+      transform: rotate(45deg);
+      box-shadow: 6px 8px 15px rgba(15, 23, 42, 0.08);
+    }
+
+    #message-text {
+      margin: 0;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    @media (min-width: 768px) {
+      #message-text {
+        font-size: 1.2rem;
+      }
+    }
+
+    .hint-text {
+      margin: 32px 0 8px;
+      text-align: center;
+      font-size: 0.83rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      opacity: 0.9;
+    }
+
+    .paw-divider {
+      margin-top: 4px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: rgba(55, 65, 81, 0.6);
+      user-select: none;
+    }
+
+    /* Cake section */
+    .cake-title {
+      margin: 0 0 18px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    @media (min-width: 768px) {
+      .cake-title {
+        font-size: 1.6rem;
+      }
+    }
+
+    .cake-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .cake-area {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 28px;
+      }
+    }
+
+    .cake-illustration {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .cake-illustration {
+        width: 190px;
+        height: 190px;
+      }
+    }
+
+    .cake-plate {
+      position: absolute;
+      bottom: 16px;
+      width: 130px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #f5f7ff, #dbe7ff);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    }
+
+    .cake-body {
+      position: absolute;
+      bottom: 28px;
+      width: 120px;
+      height: 80px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #e2eeff);
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.15);
+      overflow: hidden;
+    }
+
+    .cake-layer {
+      position: absolute;
+      inset-inline: 0;
+    }
+
+    .cake-layer-top {
+      top: 8px;
+      height: 18px;
+      background: linear-gradient(90deg, #c4d9ff, #e0e7ff);
+    }
+
+    .cake-layer-middle {
+      top: 32px;
+      height: 16px;
+      background: linear-gradient(90deg, #e0ecff, #d1e2ff);
+    }
+
+    .cake-layer-bottom {
+      bottom: 0;
+      height: 26px;
+      background: linear-gradient(180deg, #c6ddff, #9cbcff);
+    }
+
+    .cake-sprinkles {
+      position: absolute;
+      inset: 12px 10px auto;
+      height: 14px;
+      background-image:
+        radial-gradient(circle at 10% 50%, #8fb7ff 0, transparent 45%),
+        radial-gradient(circle at 40% 20%, #a5b4fc 0, transparent 45%),
+        radial-gradient(circle at 70% 60%, #f9a8d4 0, transparent 45%),
+        radial-gradient(circle at 90% 40%, #38bdf8 0, transparent 45%);
+      opacity: 0.9;
+    }
+
+    .cake-paw {
+      position: absolute;
+      right: 8px;
+      bottom: 6px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .cake-candle {
+      position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 42px;
+  display: flex;
+  flex-direction: column-reverse; /* ngọn lửa ở trên, thân nến ở dưới */
+  align-items: center;
+  justify-content: flex-start;
+    }
+
+    .candle-body {
+  width: 10px;
+  height: 26px;
+  border-radius: 999px;
+  background: repeating-linear-gradient(
+    135deg,
+    #ffffff,
+    #ffffff 4px,
+    #c4d9ff 4px,
+    #c4d9ff 8px
+  );
+  box-shadow: 0 4px 8px rgba(15, 23, 42, 0.18);
+}
+
+.candle-flame {
+  width: 14px;
+  height: 20px;
+  border-radius: 50% 50% 50% 50%;
+  background: radial-gradient(circle at 30% 20%, #ffffff 0, #fde68a 40%, #f97316 75%);
+  margin-top: -6px;           /* đẩy nhẹ xuống thân nến */
+  filter: blur(0.2px);
+  box-shadow:
+    0 0 10px rgba(252, 211, 77, 0.9),
+    0 0 18px rgba(252, 211, 77, 0.6);
+  animation: flameFlicker 1.3s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+
+    @keyframes flameFlicker {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.95;
+      }
+      50% {
+        transform: translateY(-1px) scale(1.03);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(1px) scale(0.98);
+        opacity: 0.9;
+      }
+    }
+
+    .cake-cat {
+      position: absolute;
+      left: -24px;
+      bottom: 20px;
+      font-size: 1.6rem;
+      transform: scaleX(-1);
+      filter: drop-shadow(0 4px 8px rgba(15, 23, 42, 0.25));
+    }
+
+    .cake-message {
+      max-width: 340px;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    .cake-message p {
+      margin: 4px 0;
+    }
+
+    @media (min-width: 768px) {
+      .cake-message {
+        font-size: 1.02rem;
+      }
+    }
+
+    /* Little note */
+    .note-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .note-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 24px;
+      }
+    }
+
+    .note-pet {
+      flex: 0 0 auto;
+    }
+
+    .pet-circle {
+      width: 82px;
+      height: 82px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #e0ecff 60%, #c4d9ff 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: 0 14px 26px rgba(15, 23, 42, 0.18);
+    }
+
+    .pet-emoji {
+      font-size: 2.1rem;
+    }
+
+    .thermometer {
+      position: absolute;
+      right: 10px;
+      bottom: 16px;
+      font-size: 1.1rem;
+    }
+
+    .note-card {
+      max-width: 420px;
+      padding: 18px 18px 18px;
+      border-radius: 20px;
+      background: var(--note-bg);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.14);
+      border: 1px solid rgba(143, 183, 255, 0.65);
+      text-align: left;
+    }
+
+    @media (min-width: 640px) {
+      .note-card {
+        padding: 20px 22px 22px;
+      }
+    }
+
+    .note-title {
+      margin: 0 0 10px;
+      font-family: "Caveat", system-ui, sans-serif;
+      font-size: 1.35rem;
+      color: #1d4ed8;
+    }
+
+    .note-line {
+      margin: 4px 0;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      color: var(--text-main);
+    }
+
+    @media (min-width: 768px) {
+      .note-line {
+        font-size: 1.03rem;
+      }
+    }
+
+    .corner-cat-icon {
+      position: absolute;
+      right: 18px;
+      top: 20px;
+      font-size: 1.3rem;
+      opacity: 0.7;
+      user-select: none;
+    }
+
+    @media (max-width: 480px) {
+      .corner-cat-icon {
+        right: 10px;
+        top: 16px;
+      }
+    }
+
+    /* NewJeans polaroids */
+    .polaroid {
+      position: absolute;
+      width: 110px;
+      pointer-events: none;
+      opacity: 0.78;
+      transform-origin: center;
+    }
+
+    .polaroid-inner {
+      background: #f9fbff;
+      border-radius: 12px;
+      padding: 8px 8px 10px;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.22);
+      border: 2px solid rgba(180, 199, 255, 0.9);
+    }
+
+    .polaroid img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      object-fit: cover;
+      background: #dbeafe;
+    }
+
+    .polaroid-1 {
+      top: 36px;
+      left: -6px;
+      transform: rotate(-8deg);
+    }
+
+    .polaroid-2 {
+      top: 64px;
+      right: -10px;
+      transform: rotate(6deg);
+    }
+
+    .polaroid-3 {
+      bottom: -10px;
+      left: 14%;
+      transform: rotate(3deg);
+    }
+
+    @media (max-width: 640px) {
+      .polaroid {
+        width: 82px;
+      }
+
+      .polaroid-3 {
+        display: none;
+      }
+    }
+
+    /* Floating decorative icons */
+    .floating-icon {
+      position: fixed;
+      font-size: 1.1rem;
+      opacity: 0.65;
+      pointer-events: none;
+      animation: floatSoft 14s ease-in-out infinite alternate;
+      z-index: -1;
+    }
+
+    .floating-icon.star-1 {
+      top: 12%;
+      left: 9%;
+    }
+
+    .floating-icon.star-2 {
+      top: 18%;
+      right: 8%;
+      animation-delay: 2s;
+    }
+
+    .floating-icon.heart-1 {
+      bottom: 18%;
+      left: 12%;
+      animation-delay: 4s;
+    }
+
+    .floating-icon.paw-1 {
+      bottom: 12%;
+      right: 12%;
+      animation-delay: 6s;
+    }
+
+    @keyframes floatSoft {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-10px);
+      }
+    }
+
+    /* Cat GIFs */
+    .cat-gif {
+      position: fixed;
+      bottom: 10px;
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 18px;
+      opacity: 0.78;
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.25);
+      pointer-events: none;
+    }
+
+    .gif-left {
+      left: 10px;
+    }
+
+    .gif-right {
+      right: 10px;
+    }
+
+    @media (max-width: 640px) {
+      .cat-gif {
+        width: 64px;
+        height: 64px;
+        bottom: 8px;
+      }
+
+      .gif-left {
+        left: 6px;
+      }
+
+      .gif-right {
+        right: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gif-left {
+        display: none;
+      }
+    }
+
+    /* Music toggle */
+    .music-toggle {
+      position: fixed;
+      right: 16px;
+      bottom: 18px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(15, 23, 42, 0.72);
+      color: #e0ecff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.4);
+      transition:
+        background var(--transition-fast),
+        transform 0.18s ease,
+        box-shadow 0.18s ease,
+        opacity 0.18s ease;
+      z-index: 8;
+    }
+
+    .music-toggle:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 38px rgba(15, 23, 42, 0.55);
+    }
+
+    .music-toggle.is-on {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #f9fafb;
+    }
+
+    .music-toggle:active {
+      transform: translateY(0);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.44);
+    }
+
+    /* Intro overlay */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at top, rgba(191, 219, 254, 0.45) 0, rgba(191, 219, 254, 0) 60%),
+        linear-gradient(145deg, #4f46e5, #2563eb);
+      z-index: 20;
+      color: #eff6ff;
+      overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+
+    #intro-overlay::before {
+      content: "";
+      position: absolute;
+      inset: -30%;
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.2) 0, transparent 55%),
+        radial-gradient(circle at 80% 10%, rgba(129, 140, 248, 0.3) 0, transparent 55%),
+        radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.3) 0, transparent 55%);
+      opacity: 0.85;
+      animation: introGlow 18s linear infinite alternate;
+    }
+
+    @keyframes introGlow {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      100% {
+        transform: translate3d(0, -10px, 0) scale(1.05);
+      }
+    }
+
+    #intro-overlay.intro-fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .intro-content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px 20px;
+      border-radius: 28px;
+      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.12) 0, rgba(15, 23, 42, 0.08) 75%);
+      box-shadow:
+        0 22px 60px rgba(15, 23, 42, 0.65),
+        0 0 0 1px rgba(191, 219, 254, 0.4);
+      backdrop-filter: blur(18px);
+    }
+
+    .tap-icon {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tap-circle {
+      position: absolute;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      border: 2px solid rgba(219, 234, 254, 0.9);
+      background: radial-gradient(circle at 30% 20%, rgba(239, 246, 255, 0.9) 0, rgba(239, 246, 255, 0.1) 60%, transparent 80%);
+      animation: pulseCircle 1.6s ease-out infinite;
+    }
+
+    .tap-circle.tap-circle-delay {
+      width: 100px;
+      height: 100px;
+      border-width: 1px;
+      opacity: 0.65;
+      animation-delay: 0.4s;
+    }
+
+    .tap-finger {
+      position: relative;
+      font-size: 2.6rem;
+      filter: drop-shadow(0 6px 12px rgba(15, 23, 42, 0.6));
+    }
+
+    @keyframes pulseCircle {
+      0% {
+        transform: scale(0.88);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.18);
+        opacity: 0;
+      }
+    }
+
+    .intro-main {
+      margin: 2px 0 4px;
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+    }
+
+    .intro-sub {
+      margin: 0;
+      margin-top: 4px;
+      font-size: 0.86rem;
+      color: rgba(226, 232, 240, 0.95);
+    }
+
+    @media (min-width: 768px) {
+      .intro-content {
+        padding: 32px 36px;
+      }
+
+      .intro-main {
+        font-size: 1.25rem;
+      }
+
+      .intro-sub {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .intro-content {
+        padding: 20px 18px;
+        border-radius: 22px;
+      }
+
+      .tap-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 16px;
+      }
+
+      .tap-finger {
+        font-size: 2.4rem;
+      }
+    }
+
+    /* Responsive basics */
+    @media (max-width: 640px) {
+      .hint-text {
+        margin-top: 26px;
+      }
+
+      .stage-wrapper {
+        min-height: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="intro-overlay">
+    <div class="intro-content">
+      <div class="tap-icon">
+        <div class="tap-circle"></div>
+        <div class="tap-circle tap-circle-delay"></div>
+        <div class="tap-finger">👆</div>
+      </div>
+      <p class="intro-main">Tap anywhere to continue ✨</p>
+      <p class="intro-sub">(or click, if you’re on a laptop)</p>
+    </div>
+  </div>
+
+  <main id="app">
+    <span class="floating-icon star-1">✦</span>
+    <span class="floating-icon star-2">✧</span>
+    <span class="floating-icon heart-1">♡</span>
+    <span class="floating-icon paw-1">🐾</span>
+
+    <div class="content-shell">
+      <header class="top-header">
+        <p class="top-tagline">A tiny blue corner just for Thuy Duong</p>
+      </header>
+
+      <div class="corner-cat-icon">🐈‍⬛</div>
+
+      <div class="polaroid polaroid-1">
+        <div class="polaroid-inner">
+          <img src="newjeans1.png" alt="No photo" />
+        </div>
+      </div>
+
+      <div class="polaroid polaroid-2">
+        <div class="polaroid-inner">
+          <img src="cat1.png" alt="No photo" />
+        </div>
+      </div>
+
+      <div class="polaroid polaroid-3">
+        <div class="polaroid-inner">
+          <img src="cat2.png" alt="No photo" />
+        </div>
+      </div>
+
+      <div class="stage-wrapper">
+        <section id="message-stage" class="stage">
+          <div class="message-bubble">
+            <p id="message-text"></p>
+          </div>
+        </section>
+
+        <section id="cake-stage" class="stage">
+          <h1 class="cake-title">Happy 20th Birthday, Thuy Duong 🎂</h1>
+          <div class="cake-area">
+            <div class="cake-illustration">
+              <div class="cake-plate"></div>
+              <div class="cake-body">
+                <div class="cake-layer cake-layer-top"></div>
+                <div class="cake-layer cake-layer-middle"></div>
+                <div class="cake-layer cake-layer-bottom"></div>
+                <div class="cake-sprinkles"></div>
+                <div class="cake-paw">🐾</div>
+              </div>
+              <div class="cake-candle">
+                <div class="candle-body"></div>
+                <div class="candle-flame"></div>
+              </div>
+              <div class="cake-cat">🐈</div>
+            </div>
+            <div class="cake-message">
+              <p>Happy 20th birthday, Thuy Duong.</p>
+              <p>May this year be full of calm days, soft moments and laughs that feel real.</p>
+              <p>U deserve good energy and a life that lets u breathe.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="note-stage" class="stage">
+          <div class="note-wrapper">
+            <div class="note-pet">
+              <div class="pet-circle">
+                <span class="pet-emoji">🐶</span>
+                <span class="thermometer">🌡️</span>
+              </div>
+            </div>
+            <div class="note-card">
+              <h2 class="note-title">A tiny check-up for u</h2>
+              <p id="note-line-1" class="note-line"></p>
+              <p id="note-line-2" class="note-line"></p>
+              <p id="note-line-3" class="note-line"></p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <p id="hint-text" class="hint-text">Tap to see the next message</p>
+      <div class="paw-divider">🐾 · 🐾 · 🐾</div>
+    </div>
+
+    <img src="cat-gif-1.gif" alt="Cute looping cat gif" class="cat-gif gif-left" />
+    <img src="cat-gif-2.gif" alt="Cute looping cat gif" class="cat-gif gif-right" />
+
+    <button id="music-toggle" class="music-toggle" aria-label="Play music">🔈</button>
+
+    <audio id="bg-music" loop>
+      <source src="ditto.mp3" type="audio/mpeg" />
+    </audio>
+  </main>
+
+  <script>
+    // Core flow data: messages + simple step state
+    document.addEventListener("DOMContentLoaded", function () {
+      const messages = [
+        "Hey Thuy Duong",
+        "So uh\u2026 today\u2019s your 20th birthday.",
+        "I\u2019ve been low-key waiting for this day just so I could make u something a bit different.",
+        "It\u2019s not some huge present or anything crazy\u2026",
+        "Just a tiny blue corner of the internet that quietly belongs to u.",
+        "Thank u for being u ... more than u know, u make things feel softer and better.",
+        "I really hope your 20 feel like a slow, happy glow up.",
+        "Okay, I\u2019ll stop talking for a sec.",
+        "Time for your birthday cake. \ud83c\udf82"
+      ];
+
+      const introOverlay = document.getElementById("intro-overlay");
+      const app = document.getElementById("app");
+      const messageStage = document.getElementById("message-stage");
+      const cakeStage = document.getElementById("cake-stage");
+      const noteStage = document.getElementById("note-stage");
+      const messageText = document.getElementById("message-text");
+      const hintText = document.getElementById("hint-text");
+      const tagline = document.querySelector(".top-tagline");
+      const noteLine1 = document.getElementById("note-line-1");
+      const noteLine2 = document.getElementById("note-line-2");
+      const noteLine3 = document.getElementById("note-line-3");
+      const bgMusic = document.getElementById("bg-music");
+      const musicToggle = document.getElementById("music-toggle");
+
+      let introDone = false;
+      let flowActive = false;
+      let isAnimating = false;
+      let currentStep = 0; // 0-8: messages, 9: cake, 10: note
+      const lastStep = 10;
+
+      function getStageType(step) {
+        if (step >= 0 && step <= 8) return "message";
+        if (step === 9) return "cake";
+        if (step >= 10) return "note";
+        return null;
+      }
+
+      function getStageElement(type) {
+        if (type === "message") return messageStage;
+        if (type === "cake") return cakeStage;
+        if (type === "note") return noteStage;
+        return null;
+      }
+
+      // Update the content for a given step inside its section
+      function prepareStep(step) {
+        const type = getStageType(step);
+        if (type === "message") {
+          messageText.textContent = messages[step];
+        } else if (type === "note") {
+          // Single-shot note content
+          if (step >= 10) {
+            noteLine1.textContent = "Feels like u\u2019ve been pretty worn out these past few days.";
+            noteLine2.textContent = "So tonight, log off a bit earlier and let yourself sink into a deep, cozy sleep.";
+            noteLine3.textContent = "Gudbye \ud83d\udc4b  \u2014 Thuan";
+          }
+        }
+      }
+
+      // Hint text changes depending on where we are
+      function updateHint(step) {
+        if (step <= 7) {
+          hintText.textContent = "Tap to see the next message";
+        } else if (step === 8) {
+          hintText.textContent = "Tap to see what comes next";
+        } else if (step === 9) {
+          hintText.textContent = "Tap to open a little note";
+        } else if (step >= 10) {
+          hintText.textContent = "That\u2019s all for now. \ud83c\udf19";
+        }
+      }
+
+      // Show the very first message right after intro fades out
+      function showFirstMessage() {
+        prepareStep(currentStep);
+        messageStage.classList.add("is-visible");
+        updateHint(currentStep);
+      }
+
+      // Handle transition between steps with fade-out -> fade-in
+      function advanceFlow() {
+        if (!flowActive || isAnimating) return;
+        if (currentStep >= lastStep) return;
+
+        const fromStep = currentStep;
+        const toStep = currentStep + 1;
+        const fromType = getStageType(fromStep);
+        const toType = getStageType(toStep);
+        const fromEl = getStageElement(fromType);
+        const toEl = getStageElement(toType);
+
+        currentStep = toStep;
+        isAnimating = true;
+
+        // When there is no current element (very first show), just show next
+        if (!fromEl) {
+          prepareStep(toStep);
+          if (toEl) {
+            toEl.classList.add("is-visible");
+          }
+          updateHint(toStep);
+          isAnimating = false;
+          return;
+        }
+
+        // Same section transitions (messages only in this flow)
+        if (fromEl === toEl) {
+          const handleFadeOutSame = function (e) {
+            if (e.propertyName !== "opacity") return;
+            fromEl.removeEventListener("transitionend", handleFadeOutSame);
+            fromEl.classList.remove("is-fading-out");
+            // Update content for the new step
+            prepareStep(toStep);
+            updateHint(toStep);
+            // Trigger fade-in
+            void fromEl.offsetWidth; // reflow
+            fromEl.classList.add("is-visible");
+            const handleFadeInSame = function (ev) {
+              if (ev.propertyName !== "opacity") return;
+              fromEl.removeEventListener("transitionend", handleFadeInSame);
+              isAnimating = false;
+            };
+            fromEl.addEventListener("transitionend", handleFadeInSame);
+          };
+
+          fromEl.addEventListener("transitionend", handleFadeOutSame);
+          fromEl.classList.add("is-fading-out");
+          fromEl.classList.remove("is-visible");
+        } else {
+          // Cross-section transitions (messages -> cake -> note)
+          const handleFadeOut = function (e) {
+            if (e.propertyName !== "opacity") return;
+            if (!fromEl) return;
+            fromEl.removeEventListener("transitionend", handleFadeOut);
+            fromEl.classList.remove("is-fading-out");
+            fromEl.classList.remove("is-visible");
+
+            // Prepare the section for the next step if it has dynamic content
+            prepareStep(toStep);
+            if (toEl) {
+              void toEl.offsetWidth;
+              toEl.classList.add("is-visible");
+            }
+            updateHint(toStep);
+
+            if (toEl) {
+              const handleFadeIn = function (ev) {
+                if (ev.propertyName !== "opacity") return;
+                toEl.removeEventListener("transitionend", handleFadeIn);
+                isAnimating = false;
+              };
+              toEl.addEventListener("transitionend", handleFadeIn);
+            } else {
+              isAnimating = false;
+            }
+          };
+
+          fromEl.addEventListener("transitionend", handleFadeOut);
+          fromEl.classList.add("is-fading-out");
+          fromEl.classList.remove("is-visible");
+        }
+      }
+
+      // Intro overlay: tap anywhere to start the experience
+      introOverlay.addEventListener("click", function () {
+        if (introDone) return;
+        introDone = true;
+        introOverlay.classList.add("intro-fade-out");
+
+        const handleIntroEnd = function (e) {
+          if (e.propertyName !== "opacity") return;
+          introOverlay.removeEventListener("transitionend", handleIntroEnd);
+          introOverlay.style.display = "none";
+          tagline.classList.add("header-visible");
+          showFirstMessage();
+          flowActive = true;
+	if (bgMusic && musicToggle) {
+    bgMusic.play().then(function () {
+      musicOn = true;
+      musicToggle.classList.add("is-on");
+      musicToggle.setAttribute("aria-label", "Pause music");
+      musicToggle.textContent = "🔊";
+    }).catch(function () {
+      // nếu vẫn bị chặn thì user bấm nút nhạc thủ công
+      musicOn = false;
+    });
+  }
+        };
+
+        introOverlay.addEventListener("transitionend", handleIntroEnd);
+      });
+
+      // Main tap handler: advance on tap/click anywhere on the blue corner
+      app.addEventListener("click", function (event) {
+        const noAdvanceTarget = event.target.closest(".no-flow, #music-toggle");
+        if (noAdvanceTarget) return;
+        advanceFlow();
+      });
+
+      // Music toggle button: play / pause background lofi
+      let musicOn = false;
+      if (musicToggle && bgMusic) {
+        musicToggle.addEventListener("click", function (event) {
+          event.stopPropagation();
+          if (!musicOn) {
+            bgMusic
+              .play()
+              .then(function () {
+                musicOn = true;
+                musicToggle.classList.add("is-on");
+                musicToggle.setAttribute("aria-label", "Pause music");
+                musicToggle.textContent = "🔊";
+              })
+              .catch(function () {
+                musicOn = false;
+              });
+          } else {
+            bgMusic.pause();
+            musicOn = false;
+            musicToggle.classList.remove("is-on");
+            musicToggle.setAttribute("aria-label", "Play music");
+            musicToggle.textContent = "🔈";
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
