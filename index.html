@@ -119,19 +119,19 @@
       transform: translateY(0);
     }
 
-    .stage-wrapper {
-      position: relative;
-      width: 100%;
-      min-height: 240px;
-      margin-top: 36px;
-    }
+.stage-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 320px;        /* tăng để đủ chỗ cho bánh + 3 dòng text */
+  margin-top: 36px;
+}
 
-    @media (min-width: 768px) {
-      .stage-wrapper {
-        min-height: 280px;
-        margin-top: 40px;
-      }
-    }
+  @media (min-width: 768px) {
+  .stage-wrapper {
+    min-height: 340px;      /* màn lớn vẫn dư chỗ, không sao */
+    margin-top: 40px;
+  }
+}
 
     .stage {
       position: absolute;
@@ -606,16 +606,16 @@
 
     /* Cat GIFs */
     .cat-gif {
-      position: fixed;
-      bottom: 10px;
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 18px;
-      opacity: 0.78;
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.25);
-      pointer-events: none;
-    }
+  position: fixed;
+  bottom: 22px;             /* kéo GIF lên cao hơn để không bị thanh dưới che */
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 18px;
+  opacity: 0.78;
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.25);
+  pointer-events: none;
+}
 
     .gif-left {
       left: 10px;
@@ -626,27 +626,22 @@
     }
 
     @media (max-width: 640px) {
-      .cat-gif {
-        width: 64px;
-        height: 64px;
-        bottom: 8px;
-      }
+  .cat-gif {
+    width: 64px;
+    height: 64px;
+    bottom: 26px;           /* mobile: kéo cao thêm chút cho chắc */
+  }
 
-      .gif-left {
-        left: 6px;
-      }
+  .gif-left {
+    left: 6px;
+  }
 
-      .gif-right {
-        right: 6px;
-      }
-    }
+  .gif-right {
+    right: 6px;
+  }
+}
 
-    @media (max-width: 480px) {
-      .gif-left {
-        display: none;
-      }
-    }
-
+  
     /* Music toggle */
     .music-toggle {
       position: fixed;
@@ -837,13 +832,16 @@
 
     /* Responsive basics */
     @media (max-width: 640px) {
-      .hint-text {
-        margin-top: 26px;
-      }
+  .hint-text {
+    margin-top: 32px;       /* đẩy hint xuống chút để khỏi chạm vào chữ */
+  }
 
       .stage-wrapper {
-        min-height: 220px;
-      }
+    min-height: 380px;      /* quan trọng: tăng chiều cao khung trên mobile */
+  }
+.cake-message {
+    font-size: 0.9rem;      /* thu chữ phần lời chúc cho gọn trên điện thoại */
+  }
     }
   </style>
 </head>
