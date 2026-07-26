@@ -1,0 +1,17 @@
+{
+  "name": "Vũ Đức Thuận — Portfolio",
+  "short_name": "VĐT",
+  "description": "Embedded Systems, IoT, Edge AI, and open-source project portfolio.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f0e8",
+  "theme_color": "#234d7e",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

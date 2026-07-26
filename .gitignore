@@ -1,0 +1,13 @@
+node_modules/
+qa/
+tmp/
+design-demos/
+
+# Local design and source notes; not part of the public portfolio artifact.
+brand-spec.md
+design-spec.md
+direction-approved.md
+product-facts.md
+
+.DS_Store
+Thumbs.db

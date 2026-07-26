@@ -1,0 +1,13 @@
+{
+  "name": "thuanvd378-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync-github.mjs",
+    "test": "node --test tests/markdown-renderer.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

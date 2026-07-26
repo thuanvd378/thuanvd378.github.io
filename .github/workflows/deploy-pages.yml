@@ -1,0 +1,144 @@
+name: Sync GitHub data and deploy Pages
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Every six hours, deliberately offset from the busy top of hour.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build public snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      deploy: ${{ steps.snapshot.outputs.deploy }}
+    permissions:
+      contents: write
+      pages: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Record current public content
+        shell: bash
+        run: node scripts/sync-github.mjs --content-hash > "$RUNNER_TEMP/github-data-before.sha256"
+
+      - name: Sync public GitHub data
+        run: node scripts/sync-github.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check whether the snapshot should be persisted
+        id: snapshot
+        shell: bash
+        run: |
+          before="$(cat "$RUNNER_TEMP/github-data-before.sha256")"
+          after="$(node scripts/sync-github.mjs --content-hash)"
+          status="$(node scripts/sync-github.mjs --status)"
+
+          deploy=false
+          persist=false
+          if [[ "$status" == "fresh" ]]; then
+            deploy=true
+          fi
+          if [[ "$status" == "fresh" && "$before" != "$after" ]]; then
+            persist=true
+          fi
+
+          echo "deploy=$deploy" >> "$GITHUB_OUTPUT"
+          echo "persist=$persist" >> "$GITHUB_OUTPUT"
+          echo "Snapshot status: $status; deploy: $deploy; persist semantic changes: $persist"
+
+      - name: Verify deterministic README renderer
+        run: npm test
+
+      - name: Persist successful snapshot
+        if: steps.snapshot.outputs.persist == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- data/github.json data/readmes
+
+          if git diff --cached --quiet; then
+            echo "No tracked snapshot changes remain to persist."
+            exit 0
+          fi
+
+          git commit -m "chore(data): refresh GitHub snapshot [skip ci]"
+
+          if ! git push origin HEAD:main; then
+            echo "::warning::The first snapshot push raced with a newer main commit; rebasing once."
+            git fetch origin main
+            if git rebase origin/main && git push origin HEAD:main; then
+              echo "Snapshot persisted after rebasing."
+            else
+              git rebase --abort 2>/dev/null || true
+              echo "::warning::Could not persist this snapshot; deployment will still use the freshly generated data."
+            fi
+          fi
+
+      - name: Stage public files
+        if: steps.snapshot.outputs.deploy == 'true'
+        shell: bash
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='/.git/' \
+            --exclude='/.github/' \
+            --exclude='/_site/' \
+            --exclude='/scripts/' \
+            --exclude='/tests/' \
+            --exclude='/qa/' \
+            --exclude='/design-demos/' \
+            --exclude='/tmp/' \
+            --exclude='/README.md' \
+            --exclude='/package.json' \
+            --exclude='/brand-spec.md' \
+            --exclude='/design-spec.md' \
+            --exclude='/direction-approved.md' \
+            --exclude='/product-facts.md' \
+            ./ _site/
+
+      - name: Configure GitHub Pages
+        if: steps.snapshot.outputs.deploy == 'true'
+        uses: actions/configure-pages@v6
+
+      - name: Upload static site
+        if: steps.snapshot.outputs.deploy == 'true'
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy GitHub Pages
+    needs: build
+    if: needs.build.outputs.deploy == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
