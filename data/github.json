@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-08-08T19:01:18.517Z",
+  "generatedAt": "2026-08-09T02:31:44.045Z",
   "source": {
     "provider": "GitHub REST API",
     "username": "thuanvd378",
@@ -60,11 +60,11 @@
       "fork": false,
       "template": false,
       "visibility": "public",
-      "sizeKb": 34260,
+      "sizeKb": 34261,
       "hasPages": true,
       "createdAt": "2024-12-25T16:17:43Z",
-      "updatedAt": "2026-08-08T13:14:36Z",
-      "pushedAt": "2026-08-08T13:14:27Z",
+      "updatedAt": "2026-08-08T19:01:24Z",
+      "pushedAt": "2026-08-08T19:01:19Z",
       "owner": {
         "login": "thuanvd378",
         "id": 86833744,
@@ -79,14 +79,14 @@
         "htmlUrl": "https://github.com/thuanvd378/thuanvd378.github.io/blob/main/README.md",
         "sha": "850f627b39e3c0c06a5537a35322a95df2d167e7",
         "size": 1238,
-        "fetchedAt": "2026-08-08T19:01:17.152Z",
+        "fetchedAt": "2026-08-09T02:31:42.650Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/thuanvd378.github.io",
-        "fetchedAt": "2026-08-08T19:01:17.152Z"
+        "fetchedAt": "2026-08-09T02:31:42.650Z"
       }
     },
     {
@@ -155,14 +155,14 @@
         "htmlUrl": "https://github.com/thuanvd378/write-me-a-readme/blob/main/README.md",
         "sha": "d325beafb46c75bfe6d97fa370d737a4c6a9bc9c",
         "size": 15097,
-        "fetchedAt": "2026-08-08T19:01:17.211Z",
+        "fetchedAt": "2026-08-09T02:31:42.668Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/write-me-a-readme",
-        "fetchedAt": "2026-08-08T19:01:17.211Z"
+        "fetchedAt": "2026-08-09T02:31:42.668Z"
       }
     },
     {
@@ -231,14 +231,14 @@
         "htmlUrl": "https://github.com/thuanvd378/ossmark/blob/main/README.md",
         "sha": "e3b0bcacf27b2682f078f5160b62a5fb7fea9325",
         "size": 9025,
-        "fetchedAt": "2026-08-08T19:01:17.199Z",
+        "fetchedAt": "2026-08-09T02:31:42.623Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/ossmark",
-        "fetchedAt": "2026-08-08T19:01:17.199Z"
+        "fetchedAt": "2026-08-09T02:31:42.623Z"
       }
     },
     {
@@ -297,14 +297,14 @@
         "htmlUrl": "https://github.com/thuanvd378/et4361-he-thong-nhung/blob/main/README.md",
         "sha": "1de16a0a5997ca5394cc4c668fa2083273a314e2",
         "size": 13394,
-        "fetchedAt": "2026-08-08T19:01:17.252Z",
+        "fetchedAt": "2026-08-09T02:31:42.651Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/et4361-he-thong-nhung",
-        "fetchedAt": "2026-08-08T19:01:17.252Z"
+        "fetchedAt": "2026-08-09T02:31:42.651Z"
       }
     },
     {
@@ -350,14 +350,14 @@
         "htmlUrl": "https://github.com/thuanvd378/thuanvd378/blob/main/README.md",
         "sha": "ccba9c2afce0db95741610e1ae3d1920cc6a9bd7",
         "size": 2664,
-        "fetchedAt": "2026-08-08T19:01:17.169Z",
+        "fetchedAt": "2026-08-09T02:31:42.605Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/thuanvd378",
-        "fetchedAt": "2026-08-08T19:01:17.169Z"
+        "fetchedAt": "2026-08-09T02:31:42.605Z"
       }
     },
     {
@@ -410,14 +410,14 @@
         "htmlUrl": "https://github.com/thuanvd378/CodeX-Photo/blob/main/README.md",
         "sha": "d83d1a2989fba8c53c1f96e3807d244bddb5faef",
         "size": 13054,
-        "fetchedAt": "2026-08-08T19:01:17.439Z",
+        "fetchedAt": "2026-08-09T02:31:42.971Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/CodeX-Photo",
-        "fetchedAt": "2026-08-08T19:01:17.439Z"
+        "fetchedAt": "2026-08-09T02:31:42.971Z"
       }
     },
     {
@@ -468,14 +468,14 @@
         "htmlUrl": "https://github.com/thuanvd378/midi-controller-linux/blob/main/README.md",
         "sha": "e68ab8e6385c2f92e0fe912dd0f09dec9786b942",
         "size": 4278,
-        "fetchedAt": "2026-08-08T19:01:17.421Z",
+        "fetchedAt": "2026-08-09T02:31:42.963Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/midi-controller-linux",
-        "fetchedAt": "2026-08-08T19:01:17.421Z"
+        "fetchedAt": "2026-08-09T02:31:42.963Z"
       }
     },
     {
@@ -528,14 +528,14 @@
         "htmlUrl": "https://github.com/thuanvd378/iot-forge/blob/main/README.md",
         "sha": "91178c64928e525fd2ead7c5822c96446a009343",
         "size": 2631,
-        "fetchedAt": "2026-08-08T19:01:17.484Z",
+        "fetchedAt": "2026-08-09T02:31:43.042Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/iot-forge",
-        "fetchedAt": "2026-08-08T19:01:17.484Z"
+        "fetchedAt": "2026-08-09T02:31:43.042Z"
       }
     },
     {
@@ -583,14 +583,14 @@
         "htmlUrl": "https://github.com/thuanvd378/IoT-Data-Simulator/blob/main/README.md",
         "sha": "c11699447f1b5d30e3114bb39781567d8cbdc49d",
         "size": 676,
-        "fetchedAt": "2026-08-08T19:01:17.497Z",
+        "fetchedAt": "2026-08-09T02:31:42.983Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/IoT-Data-Simulator",
-        "fetchedAt": "2026-08-08T19:01:17.497Z"
+        "fetchedAt": "2026-08-09T02:31:42.983Z"
       }
     },
     {
@@ -636,14 +636,14 @@
         "htmlUrl": "https://github.com/thuanvd378/doan-duc/blob/main/README.md",
         "sha": "42ce785ab75a2d9f2dd1f90eb443d78899061c55",
         "size": 4622,
-        "fetchedAt": "2026-08-08T19:01:17.514Z",
+        "fetchedAt": "2026-08-09T02:31:43.038Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/doan-duc",
-        "fetchedAt": "2026-08-08T19:01:17.514Z"
+        "fetchedAt": "2026-08-09T02:31:43.038Z"
       }
     },
     {
@@ -691,13 +691,13 @@
         "htmlUrl": null,
         "sha": null,
         "size": null,
-        "fetchedAt": "2026-08-08T19:01:17.664Z",
+        "fetchedAt": "2026-08-09T02:31:43.313Z",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/Cryptography",
-        "fetchedAt": "2026-08-08T19:01:17.664Z"
+        "fetchedAt": "2026-08-09T02:31:43.313Z"
       }
     },
     {
@@ -749,14 +749,14 @@
         "htmlUrl": "https://github.com/thuanvd378/mpec-lab-projects/blob/main/README.md",
         "sha": "d6ffb4bc0cc39da129f78ee27fd1efe8f38354af",
         "size": 19,
-        "fetchedAt": "2026-08-08T19:01:17.782Z",
+        "fetchedAt": "2026-08-09T02:31:43.323Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/mpec-lab-projects",
-        "fetchedAt": "2026-08-08T19:01:17.782Z"
+        "fetchedAt": "2026-08-09T02:31:43.323Z"
       }
     },
     {
@@ -804,14 +804,14 @@
         "htmlUrl": "https://github.com/thuanvd378/GDGoC-BwAI-GAntigravity/blob/main/README.md",
         "sha": "49d2ef3640fb712116ef8b5f383bcc4116e26eef",
         "size": 2477,
-        "fetchedAt": "2026-08-08T19:01:17.820Z",
+        "fetchedAt": "2026-08-09T02:31:43.343Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/GDGoC-BwAI-GAntigravity",
-        "fetchedAt": "2026-08-08T19:01:17.820Z"
+        "fetchedAt": "2026-08-09T02:31:43.343Z"
       }
     },
     {
@@ -865,14 +865,14 @@
         "htmlUrl": "https://github.com/thuanvd378/bvn-tuan4-rc4-encryption/blob/main/README.md",
         "sha": "616bcefc434924ebc17e08401b8796521dbad353",
         "size": 3300,
-        "fetchedAt": "2026-08-08T19:01:17.764Z",
+        "fetchedAt": "2026-08-09T02:31:43.317Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/bvn-tuan4-rc4-encryption",
-        "fetchedAt": "2026-08-08T19:01:17.764Z"
+        "fetchedAt": "2026-08-09T02:31:43.317Z"
       }
     },
     {
@@ -926,14 +926,14 @@
         "htmlUrl": "https://github.com/thuanvd378/gf2m-modular-inverse/blob/main/README.md",
         "sha": "0c8eb61a4d82924fe45cf37854f1ae5cd0a2ecf4",
         "size": 5777,
-        "fetchedAt": "2026-08-08T19:01:17.909Z",
+        "fetchedAt": "2026-08-09T02:31:43.601Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/gf2m-modular-inverse",
-        "fetchedAt": "2026-08-08T19:01:17.909Z"
+        "fetchedAt": "2026-08-09T02:31:43.601Z"
       }
     },
     {
@@ -990,14 +990,14 @@
         "htmlUrl": "https://github.com/thuanvd378/DeepStream-YOLOv8-Jetson-Nano-16RTSP/blob/master/README.md",
         "sha": "83d575566ee15f0f5a6c6b9f3daf033d555cdb57",
         "size": 16093,
-        "fetchedAt": "2026-08-08T19:01:17.747Z",
+        "fetchedAt": "2026-08-09T02:31:43.246Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/DeepStream-YOLOv8-Jetson-Nano-16RTSP",
-        "fetchedAt": "2026-08-08T19:01:17.747Z"
+        "fetchedAt": "2026-08-09T02:31:43.246Z"
       }
     },
     {
@@ -1046,14 +1046,14 @@
         "htmlUrl": "https://github.com/thuanvd378/Arduino/blob/main/README.md",
         "sha": "762b2aeefe327ecad4a811a715d7b99d0716761b",
         "size": 1719,
-        "fetchedAt": "2026-08-08T19:01:17.986Z",
+        "fetchedAt": "2026-08-09T02:31:43.648Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/Arduino",
-        "fetchedAt": "2026-08-08T19:01:17.986Z"
+        "fetchedAt": "2026-08-09T02:31:43.648Z"
       }
     },
     {
@@ -1109,14 +1109,14 @@
         "htmlUrl": "https://github.com/thuanvd378/mojo-cnn-gpu/blob/main/README.md",
         "sha": "062664d410db3a8391dc3325fe3d4b87b253586c",
         "size": 6580,
-        "fetchedAt": "2026-08-08T19:01:18.132Z",
+        "fetchedAt": "2026-08-09T02:31:43.707Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/mojo-cnn-gpu",
-        "fetchedAt": "2026-08-08T19:01:18.132Z"
+        "fetchedAt": "2026-08-09T02:31:43.707Z"
       }
     },
     {
@@ -1165,13 +1165,13 @@
         "htmlUrl": null,
         "sha": null,
         "size": null,
-        "fetchedAt": "2026-08-08T19:01:18.019Z",
+        "fetchedAt": "2026-08-09T02:31:43.678Z",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/parallel-programming",
-        "fetchedAt": "2026-08-08T19:01:18.019Z"
+        "fetchedAt": "2026-08-09T02:31:43.678Z"
       }
     },
     {
@@ -1219,14 +1219,14 @@
         "htmlUrl": "https://github.com/thuanvd378/Entropy/blob/main/README.md",
         "sha": "20ca63f2beedd9d5a9fd618a8c1a6ba87af06828",
         "size": 5127,
-        "fetchedAt": "2026-08-08T19:01:18.059Z",
+        "fetchedAt": "2026-08-09T02:31:43.716Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/Entropy",
-        "fetchedAt": "2026-08-08T19:01:18.059Z"
+        "fetchedAt": "2026-08-09T02:31:43.716Z"
       }
     },
     {
@@ -1274,14 +1274,14 @@
         "htmlUrl": "https://github.com/thuanvd378/basic-deep-learning/blob/main/README.md",
         "sha": "f4a1de6bdec023ca3fede9df73df1540b216a696",
         "size": 333,
-        "fetchedAt": "2026-08-08T19:01:18.517Z",
+        "fetchedAt": "2026-08-09T02:31:43.949Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/basic-deep-learning",
-        "fetchedAt": "2026-08-08T19:01:18.517Z"
+        "fetchedAt": "2026-08-09T02:31:43.949Z"
       }
     },
     {
@@ -1333,14 +1333,14 @@
         "htmlUrl": "https://github.com/thuanvd378/Clarity/blob/main/README.md",
         "sha": "5431a489a281c6ab5a2b7a2cbdc17a16c99a266c",
         "size": 3244,
-        "fetchedAt": "2026-08-08T19:01:18.301Z",
+        "fetchedAt": "2026-08-09T02:31:44.009Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/Clarity",
-        "fetchedAt": "2026-08-08T19:01:18.301Z"
+        "fetchedAt": "2026-08-09T02:31:44.009Z"
       }
     },
     {
@@ -1388,14 +1388,14 @@
         "htmlUrl": "https://github.com/thuanvd378/CTDL-GT/blob/main/README.md",
         "sha": "cad0035c7e4ed0324ee5bd605fdc7ef32051c697",
         "size": 1581,
-        "fetchedAt": "2026-08-08T19:01:18.318Z",
+        "fetchedAt": "2026-08-09T02:31:44.044Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/CTDL-GT",
-        "fetchedAt": "2026-08-08T19:01:18.318Z"
+        "fetchedAt": "2026-08-09T02:31:44.044Z"
       }
     },
     {
@@ -1446,14 +1446,14 @@
         "htmlUrl": "https://github.com/thuanvd378/stanford-cs-229-machine-learning/blob/master/README.md",
         "sha": "d13c6ef4b1f910a5bb1f3268f2e2053f78080bfa",
         "size": 4213,
-        "fetchedAt": "2026-08-08T19:01:18.247Z",
+        "fetchedAt": "2026-08-09T02:31:43.895Z",
         "sourceExtension": ".md",
         "stale": false
       },
       "source": {
         "provider": "GitHub REST API",
         "apiUrl": "https://api.github.com/repos/thuanvd378/stanford-cs-229-machine-learning",
-        "fetchedAt": "2026-08-08T19:01:18.247Z"
+        "fetchedAt": "2026-08-09T02:31:43.895Z"
       }
     }
   ],
@@ -1477,15 +1477,15 @@
   },
   "sync": {
     "status": "fresh",
-    "startedAt": "2026-08-08T19:01:16.449Z",
-    "completedAt": "2026-08-08T19:01:18.517Z",
+    "startedAt": "2026-08-09T02:31:41.752Z",
+    "completedAt": "2026-08-09T02:31:44.045Z",
     "errors": [],
     "rateLimit": {
       "limit": 5000,
       "remaining": 4951,
       "used": 49,
       "resource": "core",
-      "resetAt": "2026-08-08T20:01:16.000Z"
+      "resetAt": "2026-08-09T03:31:41.000Z"
     }
   }
 }
